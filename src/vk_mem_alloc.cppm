@@ -1,6 +1,13 @@
 module;
+
+#include <vulkan/vulkan_hpp_macros.hpp>
+#if defined(__cpp_lib_modules)
+#define VMA_HPP_ENABLE_STD_MODULE
+#endif
+
 #define VMA_IMPLEMENTATION
 #include <vk_mem_alloc.hpp>
+
 export module vk_mem_alloc_hpp;
 
 export namespace VMA_HPP_NAMESPACE {
@@ -80,3 +87,4 @@ namespace VULKAN_HPP_NAMESPACE {
   template class UniqueHandle<VMA_HPP_NAMESPACE::VirtualBlock, VMA_HPP_NAMESPACE::Dispatcher>;
 }
 #endif
+

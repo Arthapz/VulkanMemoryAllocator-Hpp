@@ -904,8 +904,15 @@ public class Generate {
     static void generateModule(List<String> enums, List<String> structs, List<Handle> handles) throws IOException {
         Files.writeString(Path.of("src/vk_mem_alloc.cppm"), processTemplate("""
                 module;
+
+                #include <vulkan/vulkan_hpp_macros.hpp>
+                #if defined(__cpp_lib_modules)
+                #define VMA_HPP_ENABLE_STD_MODULE
+                #endif
+
                 #define VMA_IMPLEMENTATION
                 #include <vk_mem_alloc.hpp>
+
                 export module vk_mem_alloc_hpp;
                 
                 export namespace VMA_HPP_NAMESPACE {

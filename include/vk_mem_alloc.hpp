@@ -5,8 +5,15 @@
 #include <vk_mem_alloc.h>
 #endif
 
+#if !defined(VMA_HPP_ENABLE_VULKAN_HPP_MODULE)
 #if !defined(VULKAN_HPP)
 #include <vulkan/vulkan.hpp>
+#endif
+#else
+#if defined(VMA_HPP_ENABLE_STD_MODULE)
+import VULKAN_HPP_STD_MODULE;
+#endif
+import vulkan_hpp;
 #endif
 
 #if !defined(VMA_HPP_NAMESPACE)
